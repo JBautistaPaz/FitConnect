@@ -3,7 +3,7 @@ import subprocess
 from tkinter import *
 
 bienvenidos=tk.Tk()
-bienvenidos.title("Bienvenidos")
+bienvenidos.title("Bienvenidos!")
 bienvenidos.geometry("700x400")
 bienvenidos.configure(bg="#F3F4F6")
 
