@@ -17,7 +17,7 @@ def recuperar_texto():
         pass
 
 entrenamientos = tk.Tk()
-entrenamientos.title("Entrenamiento")
+entrenamientos.title("Entrenamiento!!")
 entrenamientos.geometry("700x600")
 entrenamientos.config(bg="#F3F4F6")
 
