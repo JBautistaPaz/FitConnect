@@ -23,7 +23,7 @@ def iniciar_sesion():
         login.destroy()
     else:
         if registro[2] == contrasenia: 
-            subprocess.Popen(["python", "./main.py"])
+            subprocess.Popen(["python", "Parcial2/main.py"])
             login.destroy()
         else:
             messagebox.showerror("Error", "La contraseña es incorrecta. Por favor, inténtelo de nuevo.")

@@ -1,41 +1,75 @@
 import tkinter as tk
 import subprocess
 
-entrenamientos=tk.Tk()
+archivo_texto = "texto_guardado.txt"
+
+def guardar_texto():
+    texto = cuadro_texto.get("1.0", "end-1c") 
+    with open(archivo_texto, "w") as archivo:
+        archivo.write(texto) 
+
+def recuperar_texto():
+    try:
+        with open(archivo_texto, "r") as archivo:
+            texto = archivo.read() 
+            cuadro_texto.insert("1.0", texto) 
+    except FileNotFoundError:
+        pass
+
+entrenamientos = tk.Tk()
 entrenamientos.title("Entrenamiento")
 entrenamientos.geometry("700x600")
 entrenamientos.config(bg="#F3F4F6")
 
-label_total=tk.Label(entrenamientos, text="Tu Entrenamiento", font=("Helvetica", 14, "bold"), bg="#F3F4F6", fg="#2D3748")
+
+label_total = tk.Label(entrenamientos, text="Tu Entrenamiento", font=("Helvetica", 14, "bold"), bg="#F3F4F6", fg="#2D3748")
 label_total.config(bg="white")
+label_total.pack(pady=20)
 
+cuadro_texto = tk.Text(entrenamientos, height=10, width=40)
+cuadro_texto.pack(pady=20)
 
-texto1 = tk.Label(entrenamientos, text="Calentamiento Planchas 6x(40-50 Segundos)",font=("Helvetica", 14, "bold"), bg="#F3F4F6", fg="#2D3748")
-texto1.pack(pady=20)
+def mostrar_texto():
+    texto = cuadro_texto.get("1.0", "end-1c")  
+    print("Texto ingresado:", texto)
 
-texto2 = tk.Label(entrenamientos, text="1- Sentadillas 4x8", font=("Helvetica", 14, "bold"), bg="#F3F4F6", fg="#2D3748")
-texto2.pack(pady=20)
+def eliminar_texto():
+    cuadro_texto.delete("1.0", "end")  
 
-texto3 = tk.Label(entrenamientos, text="2- Press de Pecho 4x6", font=("Helvetica", 14, "bold"), bg="#F3F4F6", fg="#2D3748")
-texto3.pack(pady=20)
+def habilitar_edicion():
+    cuadro_texto.config(state=tk.NORMAL)  
 
-texto4 = tk.Label(entrenamientos, text="3- Remo con Mancuernas 4x12", font=("Helvetica", 14, "bold"), bg="#F3F4F6", fg="#2D3748")
-texto4.pack(pady=20)
+def deshabilitar_edicion():
+    cuadro_texto.config(state=tk.DISABLED)  
 
-texto5 = tk.Label(entrenamientos, text="4- Press Militar con Mancuernas 4x8", font=("Helvetica", 14, "bold"), bg="#F3F4F6", fg="#2D3748")
-texto5.pack(pady=20)
+boton_mostrar = tk.Button(entrenamientos, text="Mostrar Texto", font=("Helvetica", 12, "bold"), bg="#4FD1C5", fg="#FFFFFF",  activebackground="#38B2AC", activeforeground="#FFFFFF", relief="flat", command=mostrar_texto)
+boton_mostrar.pack(pady=10)
+
+boton_eliminar = tk.Button(entrenamientos, text="Eliminar Texto", font=("Helvetica", 12, "bold"), bg="#4FD1C5", fg="#FFFFFF",  activebackground="#38B2AC", activeforeground="#FFFFFF", relief="flat", command=eliminar_texto)
+boton_eliminar.pack(pady=10)
+
+boton_editar = tk.Button(entrenamientos, text="Habilitar Edición", font=("Helvetica", 12, "bold"), bg="#4FD1C5", fg="#FFFFFF",  activebackground="#38B2AC", activeforeground="#FFFFFF", relief="flat", command=habilitar_edicion)
+boton_editar.pack(pady=10)
+
+boton_deshabilitar = tk.Button(entrenamientos, text="Deshabilitar Edición", font=("Helvetica", 12, "bold"), bg="#4FD1C5", fg="#FFFFFF",  activebackground="#38B2AC", activeforeground="#FFFFFF", relief="flat", command=deshabilitar_edicion)
+boton_deshabilitar.pack(pady=10)
 
 def irAtras():
-    subprocess.Popen(["python", "./main.py"])
+    guardar_texto() 
+    subprocess.Popen(["python", "./Parcial2/main.py"])
     entrenamientos.destroy()
 
-boton_atras=tk.Button(entrenamientos,text="Atras",font=("Helvetica", 14, "bold"), bg="#4FD1C5", fg="#FFFFFF",  activebackground="#38B2AC",activeforeground="#FFFFFF", relief="flat", command=irAtras)
+boton_atras = tk.Button(entrenamientos, text="Atras", font=("Helvetica", 14, "bold"), bg="#4FD1C5", fg="#FFFFFF", activebackground="#38B2AC", activeforeground="#FFFFFF", relief="flat", command=irAtras)
 boton_atras.pack(pady=20)
 
 def destroy():
     entrenamientos.destroy()
 
-boton_cerrar=tk.Button(entrenamientos, text="Cerrar Página",font=("Helvetica", 12, "bold"), bg="#4FD1C5", fg="#FFFFFF",  activebackground="#38B2AC",activeforeground="#FFFFFF", relief="flat", command= destroy)
+boton_cerrar = tk.Button(entrenamientos, text="Cerrar Página", font=("Helvetica", 12, "bold"), bg="#4FD1C5", fg="#FFFFFF", activebackground="#38B2AC", activeforeground="#FFFFFF", relief="flat", command=destroy)
 boton_cerrar.pack()
+
+recuperar_texto()
+
+deshabilitar_edicion()
 
 entrenamientos.mainloop()

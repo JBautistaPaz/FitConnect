@@ -17,7 +17,7 @@ texto = tk.Label(logros, text=f"Has podido bajar {numero_aleatorio} kilos en tot
 texto.pack(pady=30)
 
 def irAtras():
-    subprocess.Popen(["python", "./main.py"])
+    subprocess.Popen(["python", "./Parcial2/main.py"])
     logros.destroy()
 
 boton_atras=tk.Button(logros, text="Atras",font=("Helvetica", 12, "bold"), bg="#4FD1C5", fg="#FFFFFF",  activebackground="#38B2AC",activeforeground="#FFFFFF", relief="flat", command= irAtras)

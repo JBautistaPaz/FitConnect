@@ -40,7 +40,7 @@ def guardar_usuario():
         cursor.execute("INSERT INTO fitconnect (usuario, contrasenia) VALUES (?, ?)", (usuario, contrasenia))
         conn.commit()
         messagebox.showinfo("Registro", "Usuario registrado exitosamente")
-        subprocess.Popen(["python", "login_register/login.py"])
+        subprocess.Popen(["python", "Parcial2/login_register/login.py"])
         register.destroy()  # Cerrar la ventana de registro
         
     except sqlite3.IntegrityError:

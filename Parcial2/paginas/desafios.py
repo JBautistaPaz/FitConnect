@@ -13,7 +13,7 @@ texto = tk.Label(desafios, text="Aca podés decidir en que nivel de desafíos qu
 texto.pack(pady=20)
 
 def irPrincipiante():
-    subprocess.Popen(["python", "desafios/desafioP.py"])
+    subprocess.Popen(["python", "Parcial2/desafios/desafioP.py"])
     desafios.destroy()
 
 boton_principiante = tk.Button(desafios,text="Principiantes",font=("Helvetica", 12, "bold"), bg="#4FD1C5", fg="#FFFFFF",activebackground="#38B2AC", activeforeground="#FFFFFF", relief="flat", command=irPrincipiante
@@ -21,21 +21,21 @@ boton_principiante = tk.Button(desafios,text="Principiantes",font=("Helvetica", 
 boton_principiante.pack(pady=10)
 
 def irIntermedio():
-    subprocess.Popen(["python", "desafios/desafioI.py"])
+    subprocess.Popen(["python", "Parcial2/desafios/desafioI.py"])
     desafios.destroy()
 
 boton_intermedio = tk.Button(desafios, text="Intermedio", font=("Helvetica", 12, "bold"), bg="#4FD1C5", fg="#FFFFFF", activebackground="#38B2AC", activeforeground="#FFFFFF", relief="flat", command=irIntermedio)
 boton_intermedio.pack(pady=10)
 
 def irExperto():
-    subprocess.Popen(["python", "desafios/desafioE.py"])
+    subprocess.Popen(["python", "Parcial2/desafios/desafioE.py"])
     desafios.destroy()
 
 boton_experto = tk.Button(desafios, text="Experto", font=("Helvetica", 12, "bold"), bg="#4FD1C5", fg="#FFFFFF", activebackground="#38B2AC", activeforeground="#FFFFFF", relief="flat", command=irExperto)
 boton_experto.pack(pady=10)
 
 def irAtras():
-    subprocess.Popen(["python", "Main.py"])
+    subprocess.Popen(["python", "./Parcial2/Main.py"])
     desafios.destroy()
 
 boton_atras=tk.Button(desafios, text="Atras",font=("Helvetica", 12, "bold"), bg="#4FD1C5", fg="#FFFFFF",  activebackground="#38B2AC",activeforeground="#FFFFFF", relief="flat", command= irAtras)

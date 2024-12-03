@@ -20,7 +20,7 @@ texto3 = tk.Label(desafioI, text="3- Peso muerto con barra: 4 series de 6-8 repe
 texto3.pack(pady=10)
 
 def irAtras():
-    subprocess.Popen(["python", "./paginas/desafios.py"])
+    subprocess.Popen(["python", "./Parcial2/paginas/desafios.py"])
     desafioI.destroy()
 
 boton_atras = tk.Button(desafioI, text="Atrás", font=("Helvetica", 12, "bold"), bg="#4FD1C5", fg="#FFFFFF", activebackground="#A0AEC0",activeforeground="#2D3748", relief="flat" ,command=irAtras
